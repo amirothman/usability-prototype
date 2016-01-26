@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'thin'
+require 'yml'
 enable :sessions
 
 get '/' do
@@ -45,4 +46,13 @@ end
 get '/setting' do
   @setting_active =true
   erb :setting
+end
+
+get '/search_results' do
+  @search_results_active = true
+  erb :search_results
+end
+
+def dummy_mail n
+
 end
