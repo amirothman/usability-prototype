@@ -47,6 +47,11 @@ $(window).load(function(){
             }
          });
 
+
+         $(".unread-mail > a").click(function(){
+          console.log("unread-mail");
+         });
+
       
 });
 
