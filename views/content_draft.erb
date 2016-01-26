@@ -30,90 +30,57 @@
       <input class="marked" type="checkbox">
   </td>
   <td>
-  <a href="#"  data-toggle="modal" data-target="#modalMessage"></a>
-  </td>
-  <td><a href="#"  data-toggle="modal" data-target="#modalMessage" >Title sdfs f sdfsd sf sdfsfdsf sdf s<small> - sdfsd sdf sd fsdf fsdfsd</small></a></td>
-  <td>20-2-2012</td>
-</tr>
-
-<% end %>
-<tr class="read-mail">
-  <td>      <input class="marked" type="checkbox">  </td>
-  <td><a href="#"  data-toggle="modal" data-target="#modalMessage">Bangna</a>
-    
+  <a href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"]%></a>
   </td>
   <td>
-    <div class="col-md-10 inside_table">
-      <a href="#"  data-toggle="modal" data-target="#modalMessage">Title sdfs f sdfsd sf sdfsfdsf sdf s<small> - sdfsd sdf sd fsdf fsdfsd</small></a>
+    <div class="col-md-8 inside_table">
+      <a href="#"  data-toggle="modal" data-target="#modalMessage" >
+    <%= mail["Title"] %>
+    <small> - <%= mail["Excerpt"] %></small></a>
     </div>
-    <div class="col-md-2">
-      <i class="fa fa-paperclip"></i>
+
+    <div class="col-md-4">
+      <% if rand(10) > 4 %>
+        <i class="fa fa-paperclip"></i>
+      <% end %>
+      <% if rand(10) > 7 %>
+        <span class="label label-default">Replied</span>
+      <% end %>
     </div>
-  
+
   </td>
-  <td>20-2-2012</td>
-</tr>
-
-<tr class="read-mail">
-  <td>      <input class="marked" type="checkbox">  </td>
-  <td><a href="#"  data-toggle="modal" data-target="#modalMessage">Bangna</a>
-    
-  </td>
-  <td>
-    <div class="col-md-10 inside_table">
-      <a href="#"  data-toggle="modal" data-target="#modalMessage">Title sdfs f sdfsd sf sdfsfdsf sdf s<small> - sdfsd sdf sd fsdf fsdfsd</small></a>
-    </div>
-
-    <div class="col-md-2">
-      <span class="label label-default">Replied</span>
-    </div>
-
-</td>
-  <td>20-2-2012</td>
-</tr>
-
-<% (1..5).each do |i| %>
-<tr class="read-mail">
-  <td>      <input class="marked" type="checkbox">  </td>
-  <td><a href="#"  data-toggle="modal" data-target="#modalMessage">Bangna</a>
-    
-  </td>
-  <td>
-    <div class="col-md-10 inside_table">
-      <a href="#"  data-toggle="modal" data-target="#modalMessage">Title sdfs f sdfsd sf sdfsfdsf sdf s<small> - sdfsd sdf sd fsdf fsdfsd</small></a>
-    </div>
-
-    <div class="col-md-2">
-
-    </div>
-
-    
-  </td>
-  <td>20-2-2012</td>
+  <td>26/1/2016</td>
 </tr>
 
 <% end %>
 
-<% (1..5).each do |i| %>
-<tr class="read-mail">
-  <td>      <input class="marked" type="checkbox">  </td>
-  <td><a href="#"  data-toggle="modal" data-target="#modalMessage">Bangna</a>
-    
-  </td>
-  <td>
-    <div class="col-md-10 inside_table">
-      <a href="#"  data-toggle="modal" data-target="#modalMessage">Title sdfs f sdfsd sf sdfsfdsf sdf s<small> - sdfsd sdf sd fsdf fsdfsd</small></a>
-    </div>
+  <% @dummy_mail_read.each do |mail| %>
+  <tr class="read-mail">
+    <td>
+        <input class="marked" type="checkbox">
+    </td>
+    <td>
+    <a href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"]%></a>
+    </td>
+    <td>
+      <div class="col-md-8 inside_table">
+        <a href="#"  data-toggle="modal" data-target="#modalMessage" >
+      <%= mail["Title"] %>
+      <small> - <%= mail["Excerpt"] %></small></a>
+      </div>
 
-    <div class="col-md-2">
-      <span class="label label-default">Replied</span>
-    </div>
+      <div class="col-md-4">
+        <% if rand(10) > 4 %>
+          <i class="fa fa-paperclip"></i>
+        <% end %>
+        <% if rand(10) > 7 %>
+          <span class="label label-default">Replied</span>
+        <% end %>
+      </div>
 
-    
-  </td>
-  <td>20-2-2012</td>
-</tr>
-
+    </td>
+    <td>25/1/2016</td>
+  </tr>
 <% end %>
 </table>
 <%= erb :loading %>

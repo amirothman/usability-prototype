@@ -34,14 +34,14 @@ get '/spam' do
   @mail_active = true
   @spam_active = true
   @dummy_mail = dummy_mail(11)
-  @dummy_mail_read = dummy_mail_read(19)
+  @dummy_mail_read = dummy_mail(19)
   erb :mail
 end
 
 get '/trash' do
   @mail_active = true
   @trash_active = true
-  @dummy_mail = dummy_mail(15)
+  @dummy_mail = dummy_mail(30)
   erb :mail
 end
 
