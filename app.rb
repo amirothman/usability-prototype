@@ -18,24 +18,30 @@ end
 get '/outbox' do
   @mail_active = true
   @outbox_active = true
+  @dummy_mail = dummy_mail(30)
   erb :mail
 end
 
 get '/draft' do
   @mail_active = true
   @draft_active = true
+  @dummy_mail = dummy_mail(9)
+  @dummy_mail_read = dummy_mail(21)
   erb :mail
 end
 
 get '/spam' do
   @mail_active = true
   @spam_active = true
+  @dummy_mail = dummy_mail(11)
+  @dummy_mail_read = dummy_mail_read(19)
   erb :mail
 end
 
 get '/trash' do
   @mail_active = true
   @trash_active = true
+  @dummy_mail = dummy_mail(15)
   erb :mail
 end
 

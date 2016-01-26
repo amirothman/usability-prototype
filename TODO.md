@@ -89,3 +89,8 @@ https://docs.google.com/document/d/1leeIeTu6YuuBOceToVTBw-6Gb6YzJ5FYM7Kd4_b9lbE
 10. User should be able to easily differentiate between Send / Save Draft / Discard buttons in a new email window. Thus the correct order for the buttons should be used (Send should go before Save, as you can clearly see the expert being confused in the video), as well as some color distinction.
 https://docs.google.com/document/d/1leeIeTu6YuuBOceToVTBw-6Gb6YzJ5FYM7Kd4_b9lbE
 11. contact’s profile?
+
+## More todos
+
+what about the functionality of marking something as spam, read, delete, flag - are these "working"?
+could you add a sample attachment where it looks as if there was one?
