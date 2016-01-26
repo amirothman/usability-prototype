@@ -1,0 +1,128 @@
+<!-- Page Content -->
+<div class="wrap">
+    <div class="container-fluid">
+       
+        <div class="row">
+            <div class="col-lg-12">
+				<h1>Contacts</h1>
+				           
+				    <a class="compose btn btn-default" href="#" role="button"  data-toggle="modal" data-target="#addContact">Add Contact</a>
+
+				    <table class="table table-condensed" id="contacts">
+				          
+				          <thead>
+				            <tr>
+				                <th>Name</th>
+				                <th>Email</th>
+				                <th>Address</th>
+				                <th>Phone</th>
+				                
+				            </tr>
+				        </thead>
+				        <tfoot>
+				            <tr>
+				                <th>Name</th>
+				                <th>Email</th>
+				                <th>Address</th>
+				                <th>Phone</th>
+				                
+				            </tr>
+				        </tfoot>
+				        <tbody>
+				            <tr>
+				                <td><a href="#"  data-toggle="modal" data-target="#myModal">Tiger Nixon</a></td>
+				                <td><a href="#"  data-toggle="modal" data-target="#myModal">tiger.nixon@mail.com</a></td>
+				                <td><a href="#"  data-toggle="modal" data-target="#myModal">Edinburgh 23, 33321</a></td>
+				                <td><a href="#"  data-toggle="modal" data-target="#myModal">61-232-3421</a></td>
+				               
+				            </tr>
+				        </tbody>
+
+        			</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Compose Email</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+    <label for="exampleInputEmail1">To</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Title</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Title">
+  </div>
+  <div class="form-group"><textarea class="form-control" rows="10"></textarea></div>
+  
+  <div class="form-group"><input type="file" class="form-control"></div>
+  
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Discard</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+   
+
+
+<!-- add contact modal -->
+<div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addContactLabel">Add Contact</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleInputName">Name</label>
+            <input type="string" class="form-control" id="exampleInputName" placeholder="Name">
+          </div>
+              
+          <div class="form-group">
+            <label for="exampleInputEmail">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputAddress">Address</label>
+            <textarea rows="3" class="form-control" id="exampleInputAddress" placeholder="Address"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPhone">Phone</label>
+            <input type="string" class="form-control" id="exampleInputPhone" placeholder="Phone">
+          </div>
+          
+
+
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- add contact modal -->
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#page-content-wrapper -->
