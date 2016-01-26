@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'thin'
-require 'yml'
+require 'yaml'
 enable :sessions
 
 get '/' do
@@ -11,6 +11,7 @@ end
 get '/inbox' do
   @mail_active = true
   @inbox_active = true
+  @dummy_mail = dummy_mail(15)
   erb :mail
 end
 
@@ -54,5 +55,7 @@ get '/search_results' do
 end
 
 def dummy_mail n
-
+  yaml = IO.binread("fixtures.yml")
+  hash = YAML.load(yaml)
+  (1..n).map{|idx| hash["Email"].sample }
 end
