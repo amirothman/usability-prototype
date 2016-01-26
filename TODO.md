@@ -73,3 +73,19 @@ makes more sense compared to other permutations of the order. - DONE
 * wider table for mail DONE
 * The address fields in the compose email overlay need the correct addresses
 * the numbers for unread emails in the folders
+
+## From Paul
+
+1. The menu should not be collapsed for the web version
+2. When you try to add the recipient, he is not saved in the to input field
+3. Sent emails should be saved in the Sent emails folder. The emails which have been saved as drafts should then be found in the Drafts folder. Emails, which have been deleted, should then appear in Trash folder.
+4. Rename “Outbox” to send
+5. Every user action, related to the operations with emails and contacts should be accompanied with a notification. “The email has been sent successfully”. “A new contact has been successfully created”.
+6. Sorting for item lists
+7. Date format: 12/03/15
+8. Is everything OK with the allignment?
+https://docs.google.com/document/d/1leeIeTu6YuuBOceToVTBw-6Gb6YzJ5FYM7Kd4_b9lbE
+9. When the user is composing a new email, he should be able to add different recipients, CC, BCC, etc.
+10. User should be able to easily differentiate between Send / Save Draft / Discard buttons in a new email window. Thus the correct order for the buttons should be used (Send should go before Save, as you can clearly see the expert being confused in the video), as well as some color distinction.
+https://docs.google.com/document/d/1leeIeTu6YuuBOceToVTBw-6Gb6YzJ5FYM7Kd4_b9lbE
+11. contact’s profile?
