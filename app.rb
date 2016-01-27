@@ -67,7 +67,7 @@ post '/send_email' do
 
   # add to the beginning of @@outbox
   date = DateTime.now
-  date_string = "#{date.day}/#{date.month}/#{date.year} #{d.hour}:#{d.minute}"
+  date_string = "#{add_necessary_zero(date.day)}/#{add_necessary_zero(date.month)}/#{add_necessary_zero(date.year)} #{add_necessary_zero(date.hour)}:#{add_necessary_zero(date.minute)}"
 
   @@outbox.unshift({"Date"=>date_string,
                     "Sender"=> params["email"],
@@ -96,4 +96,12 @@ end
 def dummy_mail_draft
   yaml = IO.binread("draft.yml")
   YAML.load(yaml)["Email"]
+end
+
+def add_necessary_zero n
+  if n < 10
+    "0#{n}"
+  else
+    "#{n}"
+  end
 end
