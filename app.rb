@@ -5,6 +5,7 @@ require 'date'
 enable :sessions
 
 @@outbox = []
+@@inbox = YAML.load(IO.binread("inbox.yml"))["Email"]
 
 get '/' do
   @index_active = true
@@ -80,8 +81,7 @@ post '/send_email' do
 end
 
 def dummy_mail
-  yaml = IO.binread("inbox.yml")
-  YAML.load(yaml)["Email"]
+  @@inbox
 end
 
 def dummy_mail_outbox

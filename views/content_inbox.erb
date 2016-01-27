@@ -43,7 +43,7 @@
           <a href="#" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
         </div>
         <div class="col-md-2">
-          <% if rand(6) > 3 %>
+          <% if mail["Attachment"] == "true" %>
           <i class="fa fa-paperclip"></i>
           <% end %>
           
@@ -66,7 +66,7 @@
           <a href="#" class="unread <%="unread-#{i}"%>" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
         </div>
         <div class="col-md-2">
-          <% if rand(6) > 3 %>
+          <% if mail["Attachment"] == "true" %>
           <i class="fa fa-paperclip"></i>
           <% end %>
           
