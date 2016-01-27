@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'thin'
 require 'yaml'
+require 'date'
 enable :sessions
 
 @@outbox = []
@@ -65,7 +66,11 @@ end
 post '/send_email' do
 
   # add to the beginning of @@outbox
-  @@outbox.unshift({"Sender"=> params["email"],
+  date = DateTime.now
+  date_string = "#{date.day}/#{date.month}/#{date.year} #{d.hour}:#{d.minute}"
+
+  @@outbox.unshift({"Date"=>date_string,
+                    "Sender"=> params["email"],
                     "Title"=> params["title"], 
                     "Content"=> params["content"],
                     "Attachment"=> params["attachment"],
