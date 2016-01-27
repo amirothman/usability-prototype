@@ -45,7 +45,6 @@ end
 get '/trash' do
   @mail_active = true
   @trash_active = true
-  @dummy_mail = dummy_mail
   erb :mail
 end
 
@@ -86,7 +85,7 @@ post '/send_email' do
   # add to the beginning of @@outbox
   date = DateTime.now
   date_string = "#{add_necessary_zero(date.day)}/#{add_necessary_zero(date.month)}/#{add_necessary_zero(date.year)} #{add_necessary_zero(date.hour)}:#{add_necessary_zero(date.minute)}"
-
+  print params
   @@outbox.unshift({"Date"=>date_string,
                     "Sender"=> params["email"],
                     "Title"=> params["title"], 

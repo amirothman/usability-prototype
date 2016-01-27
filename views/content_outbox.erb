@@ -39,7 +39,9 @@
     </div>
 
     <div class="col-md-4">
-      
+      <% if mail["Attachment"] != "" %>
+        <i class="fa fa-paperclip"></i>
+      <% end %>
     </div>
   </td>
   <td><%= mail["Date"] %></td>

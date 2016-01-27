@@ -43,14 +43,14 @@
           <a href="#" data-mail-index=<%="#{i}"%> class="message_view" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
         </div>
         <div class="col-md-2">
-          <% if mail["Attachment"] == "true" %>
+          <% if mail["Attachment"] != "" %>
           <i class="fa fa-paperclip"></i>
           <% end %>
           
         </div>
           
       </td>
-      <td>25/01/2016</td>
+      <td><%= mail["Date"] %></td>
     </tr>
       <% else %>
     <tr class="unread-mail  <%="unread-#{i}"%>" data-mail-index=<%="#{i}"%>>
@@ -66,14 +66,14 @@
           <a href="#" data-mail-index=<%="#{i}"%> class="message_view unread <%="unread-#{i}"%>" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
         </div>
         <div class="col-md-2">
-          <% if mail["Attachment"] == "true" %>
+          <% if mail["Attachment"] != "" %>
           <i class="fa fa-paperclip"></i>
           <% end %>
           
         </div>
           
       </td>
-      <td>25/01/2016</td>
+      <td><%= mail["Date"] %></td>
     </tr>
     <% end %>
 

@@ -24,7 +24,7 @@
     <td></td>
     <td></td>
   </tr>
-  <% @dummy_mail.each do |mail| %>
+  <% @@trash.each do |mail| %>
     <tr class="read-mail"><td>
           <input class="marked" type="checkbox">
       </td>
@@ -38,16 +38,10 @@
         </div>
 
         <div class="col-md-4">
-          <% if rand(5) > 3 %>
-            <i class="fa fa-paperclip"></i>
-          <% end %>
-          <% if rand(6) > 4 %>
-            <span class="label label-default">Replied</span>
-          <% end %>
         </div>
         </td>
         
-      <td>26/1/2016</td>
+      <td><%= mail["Date"] %></td>
     </tr>
 
   <% end %>

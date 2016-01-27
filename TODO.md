@@ -101,7 +101,7 @@ https://docs.google.com/document/d/1leeIeTu6YuuBOceToVTBw-6Gb6YzJ5FYM7Kd4_b9lbE
 
 get rid of random
 
-* flagging/unflagging
-* spam
-* trash / delete
+* unflagging
+* spam DONE
+* trash / delete DONE
 * outbox detect attachment
