@@ -11,37 +11,36 @@ end
 get '/inbox' do
   @mail_active = true
   @inbox_active = true
-  @dummy_mail = dummy_mail(15)
+  @dummy_mail = dummy_mail
   erb :mail
 end
 
 get '/outbox' do
   @mail_active = true
   @outbox_active = true
-  @dummy_mail = dummy_mail_outbox(30)
+  @dummy_mail = dummy_mail_outbox
   erb :mail
 end
 
 get '/draft' do
   @mail_active = true
   @draft_active = true
-  @dummy_mail = dummy_mail(9)
-  @dummy_mail_read = dummy_mail(21)
+  @dummy_mail_draft = dummy_mail_draft
   erb :mail
 end
 
 get '/spam' do
   @mail_active = true
   @spam_active = true
-  @dummy_mail = dummy_mail(11)
-  @dummy_mail_read = dummy_mail(19)
+  @dummy_mail = dummy_mail
+  @dummy_mail_read = dummy_mail
   erb :mail
 end
 
 get '/trash' do
   @mail_active = true
   @trash_active = true
-  @dummy_mail = dummy_mail(30)
+  @dummy_mail = dummy_mail
   erb :mail
 end
 
@@ -60,20 +59,17 @@ get '/search_results' do
   erb :search_results
 end
 
-def dummy_mail n
+def dummy_mail
   yaml = IO.binread("inbox.yml")
-  hash = YAML.load(yaml)
-  (1..n).map{|idx| hash["Email"].sample }
+  YAML.load(yaml)["Email"]
 end
 
-def dummy_mail_outbox n
+def dummy_mail_outbox
   yaml = IO.binread("outbox.yml")
-  hash = YAML.load(yaml)
-  (1..n).map{|idx| hash["Email"].sample }
+  YAML.load(yaml)["Email"]
 end
 
-def dummy_mail_draft n
+def dummy_mail_draft
   yaml = IO.binread("draft.yml")
-  hash = YAML.load(yaml)
-  (1..n).map{|idx| hash["Email"].sample }
+  YAML.load(yaml)["Email"]
 end
