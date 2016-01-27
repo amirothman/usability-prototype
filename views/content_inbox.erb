@@ -29,6 +29,30 @@
       <td></td>
     </tr>
       <% @dummy_mail.each_with_index do |mail,i| %>
+      <%if i > @dummy_mail.size - 4 %>
+        <tr class="read-mail">
+      <td>
+          <input class="marked" type="checkbox">
+      </td>
+      <td>
+      <a href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
+      </td>
+      <td>
+        
+        <div class="col-md-10 inside_table">
+          <a href="#" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
+        </div>
+        <div class="col-md-2">
+          <% if rand(6) > 3 %>
+          <i class="fa fa-paperclip"></i>
+          <% end %>
+          
+        </div>
+          
+      </td>
+      <td>25/01/2016</td>
+    </tr>
+      <% else %>
     <tr class="unread-mail  <%="unread-#{i}"%>">
       <td>
           <input class="marked" type="checkbox">
@@ -51,28 +75,10 @@
       </td>
       <td>25/01/2016</td>
     </tr>
+    <% end %>
 
     <% end %>
 
-    <% @dummy_mail.each do |mail| %>
-
-      <tr class="read-mail">
-        <td>      <input class="marked" type="checkbox">  </td>
-        <td><a href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a></td>
-        <td>
-          <div class="col-md-8 inside_table">
-            <a href="#"  data-toggle="modal" data-target="#modalMessage" > <%= mail["Title"] %> <small> - <%= mail["Excerpt"] %></small></a>
-          </div>
-          <div class="col-md-4">
-            <% if rand(2) > 0 %>
-             <span class="label label-default">Replied</span>
-            <% end %>
-          </div>
-        </td>
-        <td>24/01/2016</td>
-      </tr>
-
-    <% end %>
    
 
   </tbody>
