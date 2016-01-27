@@ -65,3 +65,15 @@ def dummy_mail n
   hash = YAML.load(yaml)
   (1..n).map{|idx| hash["Email"].sample }
 end
+
+def dummy_mail_outbox n
+  yaml = IO.binread("outbox.yml")
+  hash = YAML.load(yaml)
+  (1..n).map{|idx| hash["Email"].sample }
+end
+
+def dummy_mail_draft n
+  yaml = IO.binread("draft.yml")
+  hash = YAML.load(yaml)
+  (1..n).map{|idx| hash["Email"].sample }
+end

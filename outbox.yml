@@ -1,6 +1,14 @@
 ---
 Email:
   - Sender: "Paul Karpashevich"
-    Title: "Assignment #6"
-    Excerpt: "Hey there here is my"
-    Content: "Hey there here is my code for the last assignment i think a have a really good solution there."
+    Title: "Assignment #6 Solution"
+    Excerpt: "Hey can you sent me your code"
+    Content: "Hey can you sent me your code for the last assignment."
+  - Sender: "Tim Weiss"
+    Title: "Party time"
+    Excerpt: "Hey i am throwing a party you"
+    Content: "Hey i am throwing a party you want to come?"
+  - Sender: "Erika Zapatero"
+    Title: "Party time"
+    Excerpt: "Hey i am throwing a party you"
+    Content: "Hey i am throwing a party you want to come?"
