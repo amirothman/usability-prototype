@@ -92,8 +92,9 @@ https://docs.google.com/document/d/1leeIeTu6YuuBOceToVTBw-6Gb6YzJ5FYM7Kd4_b9lbE
 
 ## More todos
 
-what about the functionality of marking something as spam, read, delete, flag - are these "working"?
-could you add a sample attachment where it looks as if there was one?
+* what about the functionality of marking something as spam, read, delete, flag - are these "working"?
+
+* could you add a sample attachment where it looks as if there was one?
 
 
 ## Todos
