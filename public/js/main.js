@@ -51,6 +51,7 @@ $(window).load(function(){
          $(".unread").click(function(){
             var class_name = $(this).attr("class");
             class_name = class_name.split(" ");
+            // console.log(class_name);
             class_name = class_name[1];
             $(".unread-mail."+class_name).toggleClass("read-mail message_view "+class_name);
          });

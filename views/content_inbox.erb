@@ -63,7 +63,7 @@
       <td>
         
         <div class="col-md-10 inside_table">
-          <a href="#" data-mail-index=<%="#{i}"%> class="message_view unread <%="unread-#{i}"%>" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
+          <a href="#" data-mail-index=<%="#{i}"%> class="unread <%="unread-#{i}"%> message_view" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
         </div>
         <div class="col-md-2">
           <% if mail["Attachment"] != "" %>
