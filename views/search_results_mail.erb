@@ -1,7 +1,9 @@
 <!-- Page Content -->
 <div class="wrap">
     <div class="container-fluid">
-       
+       <div class="row">
+       	            <div class="col-lg-12">
+								<h1>Search Results for Mail</h1>
         <table class="table table-condensed">
 		  <thead>
 		    <tr>
@@ -15,16 +17,14 @@
 		  <tbody>
 		    
 		    <tr>
-		      <td><input id="mark_all" class="marked" type="checkbox"></td>
 		      <td></td>
 		      <td></td>
 		      <td></td>
 		    </tr>
 		      <% @dummy_mail.each_with_index do |mail,i| %>
-		      <%if i = 2 %>
+		      <%if i == 2 %>
 		        <tr class="read-mail" data-mail-index=<%="#{i}"%>>
 		      <td>
-		          <input class="marked" type="checkbox">
 		      </td>
 		      <td>
 		      <a href="#"  data-mail-index=<%="#{i}"%> class="message_view" data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
@@ -35,12 +35,15 @@
 		          <a href="#" data-mail-index=<%="#{i}"%> class="message_view" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
 		        </div>
 		        <div class="col-md-2">
-		          <% if mail["Attachment"] == "true" %>
+		          <% if mail["Attachment"] != "" %>
 		          <i class="fa fa-paperclip"></i>
 		          <% end %>
 		          
 		        </div>
 		          
+		      </td>
+		      <td>
+		      	<%= mail["Date"] %>
 		      </td>
 		    </tr>
 		     
@@ -53,6 +56,10 @@
 		  </tbody>
 		  
 		</table>
+	</div>
+		</div>
     </div>
 </div>
 <!-- /#page-content-wrapper -->
+
+<%= erb :modal_message %>

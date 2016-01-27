@@ -60,6 +60,7 @@ end
 
 get '/search_mail' do
   @mail_active = true
+  @dummy_mail = @@inbox
   erb :search_results_mail
 end
 
