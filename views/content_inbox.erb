@@ -30,17 +30,17 @@
     </tr>
       <% @dummy_mail.each_with_index do |mail,i| %>
       <%if i > @dummy_mail.size - 4 %>
-        <tr class="read-mail">
+        <tr class="read-mail" data-mail-index=<%="#{i}"%>>
       <td>
           <input class="marked" type="checkbox">
       </td>
       <td>
-      <a href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
+      <a href="#"  data-mail-index=<%="#{i}"%> class="message_view" data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
       </td>
       <td>
         
         <div class="col-md-10 inside_table">
-          <a href="#" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
+          <a href="#" data-mail-index=<%="#{i}"%> class="message_view" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
         </div>
         <div class="col-md-2">
           <% if mail["Attachment"] == "true" %>
@@ -53,17 +53,17 @@
       <td>25/01/2016</td>
     </tr>
       <% else %>
-    <tr class="unread-mail  <%="unread-#{i}"%>">
+    <tr class="unread-mail  <%="unread-#{i}"%>" data-mail-index=<%="#{i}"%>>
       <td>
           <input class="marked" type="checkbox">
       </td>
       <td>
-      <a class="unread <%="unread-#{i}"%>" href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
+      <a class="unread <%="unread-#{i}"%> message_view" href="#"  data-mail-index=<%="#{i}"%>  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
       </td>
       <td>
         
         <div class="col-md-10 inside_table">
-          <a href="#" class="unread <%="unread-#{i}"%>" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
+          <a href="#" data-mail-index=<%="#{i}"%> class="message_view unread <%="unread-#{i}"%>" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
         </div>
         <div class="col-md-2">
           <% if mail["Attachment"] == "true" %>

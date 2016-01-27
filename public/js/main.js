@@ -1,6 +1,6 @@
 $(window).load(function(){
         
-
+        var to_mark;
 
         $("[data-toggle]").click(function() {
 
@@ -52,10 +52,18 @@ $(window).load(function(){
             var class_name = $(this).attr("class");
             class_name = class_name.split(" ");
             class_name = class_name[1];
-            $(".unread-mail."+class_name).toggleClass("read-mail "+class_name);
+            $(".unread-mail."+class_name).toggleClass("read-mail message_view "+class_name);
          });
 
-      
+        $(".message_view").click(function(){
+          to_mark = this.dataset.mailIndex;
+          // console.log(to_mark);
+        })
+        
+        $("#mark_important").click(function(){
+          console.log(to_mark);
+          $('[data-mail-index="'+to_mark+'"]').css("background-color","#abadc4");
+        });
 });
 
         $(document).ready(function() {
