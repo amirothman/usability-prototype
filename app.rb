@@ -61,7 +61,7 @@ get '/search_results' do
 end
 
 def dummy_mail n
-  yaml = IO.binread("fixtures.yml")
+  yaml = IO.binread("inbox.yml")
   hash = YAML.load(yaml)
   (1..n).map{|idx| hash["Email"].sample }
 end
