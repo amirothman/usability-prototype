@@ -60,8 +60,11 @@ $(window).load(function(){
         })
         
         $("#mark_spam").click(function(){
-          console.log(to_mark);
           location.href = "/mark_spam/"+to_mark;
+        });
+
+        $("#mark_trash").click(function(){
+          location.href = "/mark_trash/"+to_mark;
         });
 
         $("#mark_important").click(function(){

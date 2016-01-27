@@ -7,6 +7,7 @@ enable :sessions
 @@outbox = []
 @@inbox = YAML.load(IO.binread("inbox.yml"))["Email"]
 @@spam = YAML.load(IO.binread("spam.yml"))
+@@trash = []
 
 get '/' do
   @index_active = true
@@ -71,6 +72,12 @@ end
 get '/mark_spam/:id' do
   marked_spam = @@inbox.delete_at(params['id'].to_i)
   @@spam.unshift(marked_spam)
+  redirect to('/inbox')
+end
+
+get '/mark_trash/:id' do
+  marked_delete = @@inbox.delete_at(params['id'].to_i)
+  @@trash.unshift(marked_delete)
   redirect to('/inbox')
 end
 
