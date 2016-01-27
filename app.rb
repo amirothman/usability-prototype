@@ -6,6 +6,7 @@ enable :sessions
 
 @@outbox = []
 @@inbox = YAML.load(IO.binread("inbox.yml"))["Email"]
+@@spam = YAML.load(IO.binread("spam.yml"))
 
 get '/' do
   @index_active = true
@@ -37,8 +38,6 @@ end
 get '/spam' do
   @mail_active = true
   @spam_active = true
-  @dummy_mail = dummy_mail
-  @dummy_mail_read = dummy_mail
   erb :mail
 end
 
@@ -67,6 +66,12 @@ end
 get '/search_contact' do
   @contact_active = true
   erb :search_results_contact
+end
+
+get '/mark_spam/:id' do
+  marked_spam = @@inbox.delete_at(params['id'].to_i)
+  @@spam.unshift(marked_spam)
+  redirect to('/inbox')
 end
 
 post '/send_email' do

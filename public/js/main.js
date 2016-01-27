@@ -57,11 +57,14 @@ $(window).load(function(){
 
         $(".message_view").click(function(){
           to_mark = this.dataset.mailIndex;
-          // console.log(to_mark);
         })
         
-        $("#mark_important").click(function(){
+        $("#mark_spam").click(function(){
           console.log(to_mark);
+          location.href = "/mark_spam/"+to_mark;
+        });
+
+        $("#mark_important").click(function(){
           $('[data-mail-index="'+to_mark+'"]').css("background-color","#abadc4");
         });
 });

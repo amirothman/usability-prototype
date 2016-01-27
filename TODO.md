@@ -100,3 +100,8 @@ https://docs.google.com/document/d/1leeIeTu6YuuBOceToVTBw-6Gb6YzJ5FYM7Kd4_b9lbE
 ## Todos
 
 get rid of random
+
+* flagging/unflagging
+* spam
+* trash / delete
+* outbox detect attachment

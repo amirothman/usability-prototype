@@ -25,7 +25,7 @@
    
   </tr>
 
-<% @dummy_mail.each_with_index do |mail,i| %>
+<% @@spam.each_with_index do |mail,i| %>
   <tr class="unread-mail  <%="unread-#{i}"%>"><td><input id="mark_all" class="marked" type="checkbox"></td>
     <td>
     <a  class="unread <%="unread-#{i}"%>" href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
@@ -38,35 +38,10 @@
       </div>
 
       <div class="col-md-4">
-        <% if rand(6) > 3 %>
-          <i class="fa fa-paperclip"></i>
-        <% end %>
+        
       </div>
     </td>
     <td>26/1/2015</td>
-  </tr>
-
-<% end %>
-
-<% @dummy_mail_read.each do |mail| %>
-  <tr class="read-mail"><td><input id="mark_all" class="marked" type="checkbox"></td>
-    <td>
-    <a href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
-    </td>
-    <td>
-      <div class="col-md-8 inside_table">
-
-      <a href="#"  data-toggle="modal" data-target="#modalMessage" >
-        <%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
-      </div>
-
-      <div class="col-md-4">
-        <% if rand(6) > 3 %>
-          <i class="fa fa-paperclip"></i>
-        <% end %>
-      </div>
-    </td>
-    <td>25/1/2015</td>
   </tr>
 
 <% end %>
