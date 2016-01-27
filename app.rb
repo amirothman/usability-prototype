@@ -18,7 +18,7 @@ end
 get '/outbox' do
   @mail_active = true
   @outbox_active = true
-  @dummy_mail = dummy_mail(30)
+  @dummy_mail = dummy_mail_outbox(30)
   erb :mail
 end
 
