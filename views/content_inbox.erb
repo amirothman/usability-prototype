@@ -46,6 +46,10 @@
           <% if mail["Attachment"] != "" %>
           <i class="fa fa-paperclip"></i>
           <% end %>
+
+          <% if mail["Replied"] == "true" %>
+          <span class="label label-default">Replied</span>
+          <% end %>
           
         </div>
           
