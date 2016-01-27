@@ -59,9 +59,12 @@ get '/setting' do
   erb :setting
 end
 
-get '/search_results' do
-  @search_results_active = true
-  erb :search_results
+get '/search_results_mail' do
+  erb :search_results_mail
+end
+
+get '/search_results_contact' do
+  erb :search_results_contact
 end
 
 post '/send_email' do

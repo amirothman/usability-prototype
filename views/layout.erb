@@ -56,16 +56,26 @@
         <% unless @index_active %>
 
         <div id="navbar" class="collapse navbar-collapse">
-          <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
+          
                 <% if @mail_active %>
-                <input type="text" class="form-control" placeholder="Search Mail ">
+                
+                  <form action="/search_mail" class="navbar-form navbar-left" role="search">
+                      <div class="form-group">
+                        
+                          <input type="text" class="form-control" placeholder="Search Mail ">
+                        
+                      </div>
+                  </form>
                 <% elsif @contact_active %>
-                <input type="text" class="form-control" placeholder="Search Contacts ">
+                <form action="/search_contact" class="navbar-form navbar-left" role="search">
+                      <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Search Contacts ">
+                      </div>
+                  </form>
+                
                 <% end %>
                 
-              </div>
-            </form>
+              
           <ul class="nav navbar-nav">
             
             <li class=<%='active' if @mail_active %> ><a href="/inbox">Mail</a></li>
