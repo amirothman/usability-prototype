@@ -1,3 +1,11 @@
+.flagged{
+  background-color:#abadc4;
+}
+
+tr.flagged{
+  background-color:#abadc4;
+}
+
 #contacts-wrapper{
   height: 100%;
   overflow: auto;

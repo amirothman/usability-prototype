@@ -69,7 +69,7 @@ $(window).load(function(){
         });
 
         $("#mark_important").click(function(){
-          $('[data-mail-index="'+to_mark+'"]').css("background-color","#abadc4");
+          $('[data-mail-index="'+to_mark+'"]').toggleClass("flagged");
         });
 });
 
