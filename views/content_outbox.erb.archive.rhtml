@@ -40,6 +40,19 @@
 
     <div class="col-md-4">
 
+      
+      <% if rand(5) > 2 %>
+        <i class="fa fa-paperclip"></i>
+      <% end %>
+      <% if rand(20) > 1 %>
+        <% if rand(4) > 1 %>
+          <span class="label label-default">Replied</span>
+        <% end %>
+      <span class="label label-success">Delivered</span>
+      <% else %>
+      <span class="label label-danger">Failed</span>
+      <% end %>
+
     </div>
   </td>
   <td>26/1/2016</td>

@@ -3,12 +3,15 @@ require 'thin'
 require 'yaml'
 enable :sessions
 
+@@outbox = []
+
 get '/' do
   @index_active = true
   erb :index
 end
 
 get '/inbox' do
+
   @mail_active = true
   @inbox_active = true
   @dummy_mail = dummy_mail
@@ -59,6 +62,18 @@ get '/search_results' do
   erb :search_results
 end
 
+post '/send_email' do
+
+  # add to the beginning of @@outbox
+  @@outbox.unshift({"Sender"=> params["email"],
+                    "Title"=> params["title"], 
+                    "Content"=> params["content"],
+                    "Attachment"=> params["attachment"],
+                    "Excerpt"=>params["content"].split.first(4).join(" ")})
+
+  redirect to('/inbox')
+end
+
 def dummy_mail
   yaml = IO.binread("inbox.yml")
   YAML.load(yaml)["Email"]
@@ -66,7 +81,11 @@ end
 
 def dummy_mail_outbox
   yaml = IO.binread("outbox.yml")
-  YAML.load(yaml)["Email"]
+  arr = YAML.load(yaml)["Email"]
+  @@outbox.each do |msg|
+    arr.unshift(msg)
+  end
+  arr
 end
 
 def dummy_mail_draft
