@@ -48,8 +48,11 @@ $(window).load(function(){
          });
 
 
-         $(".unread-mail > a").click(function(){
-          console.log("unread-mail");
+         $(".unread").click(function(){
+            var class_name = $(this).attr("class");
+            class_name = class_name.split(" ");
+            class_name = class_name[1];
+            $(".unread-mail."+class_name).toggleClass("read-mail "+class_name);
          });
 
       

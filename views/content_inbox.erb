@@ -28,18 +28,18 @@
       <td></td>
       <td></td>
     </tr>
-      <% @dummy_mail.each do |mail| %>
-    <tr class="unread-mail">
+      <% @dummy_mail.each_with_index do |mail,i| %>
+    <tr class="unread-mail  <%="unread-#{i}"%>">
       <td>
           <input class="marked" type="checkbox">
       </td>
       <td>
-      <a href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
+      <a class="unread <%="unread-#{i}"%>" href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
       </td>
       <td>
         
         <div class="col-md-10 inside_table">
-          <a href="#"  data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
+          <a href="#" class="unread <%="unread-#{i}"%>" data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
         </div>
         <div class="col-md-2">
           <% if rand(6) > 3 %>
