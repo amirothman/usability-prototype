@@ -15,17 +15,13 @@ end
 @@outbox = YAML.load(IO.binread("outbox.yml"))["Email"]
 @@inbox = YAML.load(IO.binread("inbox.yml"))["Email"]
 @@spam = YAML.load(IO.binread("spam.yml"))
+@@contact = YAML.load(IO.binread("data_contacts.yml"))["Contact"]
 @@trash = []
 @@draft = YAML.load(IO.binread("draft.yml"))["Email"]
 
 get '/' do
   @index_active = true
   erb :index
-end
-
-get '/contact' do
-  @dummy_contact = dummy_contact
-  erb :contact
 end
 
 get '/inbox' do
@@ -127,6 +123,18 @@ post '/send_email' do
   redirect to('/inbox')
 end
 
+
+post '/create_contact' do
+  @@contact.unshift({
+      "Name"=> params["name"],
+      "Email"=> params["email"],
+      "Address"=> params["address"],
+      "Phone"=> params["phone"]
+    })
+
+ redirect to('/contact')
+end
+
 def dummy_mail
   @@inbox
 end
@@ -137,11 +145,6 @@ end
 
 def dummy_mail_draft
   @@draft
-end
-
-def dummy_contact
-  yaml = IO.binread("data_contacts.yml")
-  YAML.load(yaml)["Contact"]
 end
 
 def add_necessary_zero n
