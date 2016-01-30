@@ -25,17 +25,17 @@
     <td></td>
     <td></td>
   </tr>
-  <% @dummy_mail.each do |mail| %>
-<tr class="read-mail"><td>
+  <% @@outbox.each_with_index do |mail,i| %>
+<tr class="read-mail" data-mail-index=<%="#{i}"%>><td>
       <input class="marked" type="checkbox">
   </td>
   <td>
-  <a href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"] %></a>
+  <a href="#" class="message_view_outbox" data-toggle="modal" data-target="#modalMessage" data-mail-index=<%="#{i}"%>><%= mail["Sender"] %></a>
   </td>
   <td>
     <div class="col-md-8 inside_table">
 
-    <a href="#"  data-toggle="modal" data-target="#modalMessage" ><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
+    <a href="#" class="message_view_outbox" data-toggle="modal" data-target="#modalMessage" data-mail-index=<%="#{i}"%>><%= mail["Title"] %><small> - <%= mail["Excerpt"] %></small></a>
     </div>
 
     <div class="col-md-4">

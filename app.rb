@@ -2,7 +2,7 @@ require 'sinatra'
 #require 'thin'
 require 'yaml'
 require 'date'
-enable :sessions
+require 'json'
 
 configure do
   # logging is enabled by default in classic style applications,
@@ -12,12 +12,16 @@ configure do
   use Rack::CommonLogger, file
 end
 
-@@outbox = []
-@@inbox = YAML.load(IO.binread("inbox.yml"))["Email"]
+# Load data
+
+@@outbox = YAML.load(IO.binread("outbox.yml"))["Email"]
+@@inbox = YAML.load(IO.binread("data_mail.yml"))["Inbox"]
 @@spam = YAML.load(IO.binread("spam.yml"))
 @@contact = YAML.load(IO.binread("data_contacts.yml"))["Contact"]
 @@trash = []
 @@result_contact = []
+@@draft = YAML.load(IO.binread("draft.yml"))["Email"]
+
 
 get '/' do
   @index_active = true
@@ -28,21 +32,18 @@ get '/inbox' do
 
   @mail_active = true
   @inbox_active = true
-  @dummy_mail = dummy_mail
   erb :mail
 end
 
 get '/outbox' do
   @mail_active = true
   @outbox_active = true
-  @dummy_mail = dummy_mail_outbox
   erb :mail
 end
 
 get '/draft' do
   @mail_active = true
   @draft_active = true
-  @dummy_mail_draft = dummy_mail_draft
   erb :mail
 end
 
@@ -64,13 +65,12 @@ get '/contact' do
 end
 
 get '/setting' do
-  @setting_active =true
+  @setting_active = true
   erb :setting
 end
 
 get '/search_mail' do
   @mail_active = true
-  @dummy_mail = @@inbox
   erb :search_results_mail
 end
 
@@ -91,12 +91,23 @@ get '/mark_trash/:id' do
   redirect to('/inbox')
 end
 
-post '/send_email' do
+get '/get_message/:id' do
+  JSON.generate @@inbox[params['id'].to_i]
+end
 
-  # add to the beginning of @@outbox
-  date = DateTime.now
-  date_string = "#{add_necessary_zero(date.day)}/#{add_necessary_zero(date.month)}/#{add_necessary_zero(date.year)} #{add_necessary_zero(date.hour)}:#{add_necessary_zero(date.minute)}"
-  print params
+get '/get_message_outbox/:id' do
+  JSON.generate @@outbox[params['id'].to_i]
+end
+
+get '/get_message_draft/:id' do
+  JSON.generate @@draft[params['id'].to_i]
+end
+
+get '/get_message_trash/:id' do
+  JSON.generate @@trash[params['id'].to_i]
+end
+
+post '/send_email' do
   @@outbox.unshift({"Date"=>date_string,
                     "Sender"=> params["email"],
                     "Title"=> params["title"], 
@@ -117,6 +128,7 @@ post '/create_contact' do
     })
 
  redirect to('/contact')
+
 end
 
 post '/search_contact'  do
@@ -146,12 +158,4 @@ end
 def dummy_mail_draft
   yaml = IO.binread("draft.yml")
   YAML.load(yaml)["Email"]
-end
-
-def add_necessary_zero n
-  if n < 10
-    "0#{n}"
-  else
-    "#{n}"
-  end
 end
