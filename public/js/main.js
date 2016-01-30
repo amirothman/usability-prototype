@@ -54,6 +54,10 @@ $(window).load(function(){
             class_name = class_name.split(" ");
             class_name = class_name[1];
             $(".unread-mail."+class_name).toggleClass("read-mail message_view "+class_name);
+            var count = parseInt($("#inbox_counter").html());
+            count = count - 1;
+            console.log(count);
+            $("#inbox_counter").html(count);
          });
 
         var insert_to_modal = function(d){

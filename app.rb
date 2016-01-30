@@ -15,7 +15,7 @@ end
 # Load data
 
 @@outbox = YAML.load(IO.binread("outbox.yml"))["Email"]
-@@inbox = YAML.load(IO.binread("inbox.yml"))["Email"]
+@@inbox = YAML.load(IO.binread("data_mail.yml"))["Inbox"]
 @@spam = YAML.load(IO.binread("spam.yml"))
 @@contact = YAML.load(IO.binread("data_contacts.yml"))["Contact"]
 @@trash = []
