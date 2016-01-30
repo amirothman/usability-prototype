@@ -22,6 +22,11 @@ get '/' do
   erb :index
 end
 
+get '/contact' do
+  @dummy_contact = dummy_contact
+  erb :contact
+end
+
 get '/inbox' do
 
   @mail_active = true
@@ -121,6 +126,11 @@ end
 def dummy_mail_draft
   yaml = IO.binread("draft.yml")
   YAML.load(yaml)["Email"]
+end
+
+def dummy_contact
+  yaml = IO.binread("data_contacts.yml")
+  YAML.load(yaml)["Contact"]
 end
 
 def add_necessary_zero n
