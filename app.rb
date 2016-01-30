@@ -12,6 +12,8 @@ configure do
   use Rack::CommonLogger, file
 end
 
+# Load data
+
 @@outbox = YAML.load(IO.binread("outbox.yml"))["Email"]
 @@inbox = YAML.load(IO.binread("inbox.yml"))["Email"]
 @@spam = YAML.load(IO.binread("spam.yml"))
