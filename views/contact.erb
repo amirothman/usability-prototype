@@ -6,12 +6,20 @@
        
         <h1>Contacts</h1>
             
-        <a class="compose btn btn-default" href="#" role="button"  data-toggle="modal" data-target="#addContact">Add Contact</a>
+        <a class="compose btn btn-default" href="#" role="button"  data-toggle="modal" data-target="#addContact">
+            Add Contact
+        </a>
+
+        <span id="read-delete">
+            <a class="compose btn btn-default btn-default" href="#"><i class="fa fa-times"></i> Delete</a> 
+        </span>
+
 
         <table class="table table-condensed" id="contacts">
           
           <thead>
             <tr>
+                <th > </th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Address</th>
@@ -21,6 +29,7 @@
         </thead>
         <tfoot>
             <tr>
+                <th> </th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Address</th>
@@ -29,45 +38,35 @@
             </tr>
         </tfoot>
         <tbody>
-            <tr>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">Tim Weiss</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">tim.weiss@mail.com</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">Edinburgh 23, 33321</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">61-232-3421</a></td>
-               
-            </tr>
-            <tr>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">Garrett Winters</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">garett.winters@mail.com</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">Tokyo 23, 33321</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">63-1231-211</a></td>
-            </tr>
-            <tr>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">Ashton Cox</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">ashton.cox@mail.com</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">San Francisco</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">66-123-21</a></td>
-            </tr>
-            <tr>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">Erika Zapatero</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">erika.zapatero@mail.com</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">Edinburgh</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">22-3232-232</a></td>
-            </tr>
-            <tr>
-                                <td><a href="#"  data-toggle="modal" data-target="#myModal">Carl Zettner </a></td>
-                                <td><a href="#"  data-toggle="modal" data-target="#myModal">carl.zettner@mail.com</a></td>
-                                <td><a href="#"  data-toggle="modal" data-target="#myModal">Weimar 23, 33321</a></td>
-                                <td><a href="#"  data-toggle="modal" data-target="#myModal">61-232-3421</a></td>
-                               
-            </tr>
-            <tr>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">Airi Satou</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">airi.satou@mail.com</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">Tokyo</a></td>
-                <td><a href="#"  data-toggle="modal" data-target="#myModal">33-2323-2312</a></td>
-            </tr>
-          </tbody>
+
+            <% @dummy_contact.each_with_index do |contact,i| %>
+                <tr>
+                    <td >
+                        <input class="marked" type="checkbox">
+                    </td>
+                    <td>
+                        <a href="#"  data-toggle="modal" data-target="#myModal" data-contact-index=<%="#{i}"%>>
+                            <%= contact["Name"] %>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#"  data-toggle="modal" data-target="#myModal" data-contact-index=<%="#{i}"%>>
+                            <%= contact["Email"] %>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#"  data-toggle="modal" data-target="#myModal" data-contact-index=<%="#{i}"%>>
+                            <%= contact["Address"] %>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#"  data-toggle="modal" data-target="#myModal" data-contact-index=<%="#{i}"%>>
+                            <%= contact["Phone"] %>
+                        </a>
+                    </td>
+                </tr>
+             <% end %>          
+        </tbody>
 
         </table>
     </div>

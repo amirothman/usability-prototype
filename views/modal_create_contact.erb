@@ -1,0 +1,41 @@
+<div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAddRecipient">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Create Contact</h4>
+      </div>
+      <div class="modal-body">
+        <div id="form-create-contact"class="form-group">
+          <label for="name">Name</label>
+          <input name="name" type="text" class="form-control" id="ct_name">
+          <label for="email">Email</label>
+          <input name="email" type="email" class="form-control" id="ct_email">
+          <label for="adress">Address</label>
+          <input name="address" type="text" class="form-control" id="ct_address">
+          <label for="phone">Phone</label>
+          <input name="phone" type="text" class="form-control" id="ct_phone">
+        </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#notificationAddContact">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="notificationAddContact" tabindex="-1" role="dialog" aria-labelledby="myModalNotificationAddContact">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">The contact was added to your contactlist.</h4>
+      </div>
+    </div>
+  </div>
+</div>
