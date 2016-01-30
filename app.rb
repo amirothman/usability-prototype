@@ -28,21 +28,18 @@ get '/inbox' do
 
   @mail_active = true
   @inbox_active = true
-  @dummy_mail = dummy_mail
   erb :mail
 end
 
 get '/outbox' do
   @mail_active = true
   @outbox_active = true
-  @dummy_mail = dummy_mail_outbox
   erb :mail
 end
 
 get '/draft' do
   @mail_active = true
   @draft_active = true
-  @dummy_mail_draft = dummy_mail_draft
   erb :mail
 end
 
@@ -64,13 +61,12 @@ get '/contact' do
 end
 
 get '/setting' do
-  @setting_active =true
+  @setting_active = true
   erb :setting
 end
 
 get '/search_mail' do
   @mail_active = true
-  @dummy_mail = @@inbox
   erb :search_results_mail
 end
 
@@ -108,11 +104,6 @@ get '/get_message_trash/:id' do
 end
 
 post '/send_email' do
-
-  # add to the beginning of @@outbox
-  date = DateTime.now
-  date_string = "#{add_necessary_zero(date.day)}/#{add_necessary_zero(date.month)}/#{add_necessary_zero(date.year)} #{add_necessary_zero(date.hour)}:#{add_necessary_zero(date.minute)}"
-  print params
   @@outbox.unshift({"Date"=>date_string,
                     "Sender"=> params["email"],
                     "Title"=> params["title"], 
@@ -133,24 +124,4 @@ post '/create_contact' do
     })
 
  redirect to('/contact')
-end
-
-def dummy_mail
-  @@inbox
-end
-
-def dummy_mail_outbox
-  @@outbox
-end
-
-def dummy_mail_draft
-  @@draft
-end
-
-def add_necessary_zero n
-  if n < 10
-    "0#{n}"
-  else
-    "#{n}"
-  end
 end

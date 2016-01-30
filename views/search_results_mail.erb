@@ -21,7 +21,7 @@
 		      <td></td>
 		      <td></td>
 		    </tr>
-		      <% @dummy_mail.each_with_index do |mail,i| %>
+		      <% @@inbox.each_with_index do |mail,i| %>
 		      <%if i == 2 %>
 		        <tr class="read-mail" data-mail-index=<%="#{i}"%>>
 		      <td>

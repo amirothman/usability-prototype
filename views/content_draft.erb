@@ -24,7 +24,7 @@
     <td></td>
   </tr>
 
-  <% @dummy_mail_draft.each_with_index do |mail,i| %>
+  <% @@draft.each_with_index do |mail,i| %>
 <tr class="unread-mail" data-mail-index=<%="#{i}"%>>
   <td>
       <input class="marked" type="checkbox">

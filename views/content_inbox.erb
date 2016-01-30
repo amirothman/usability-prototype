@@ -28,8 +28,8 @@
       <td></td>
       <td></td>
     </tr>
-      <% @dummy_mail.each_with_index do |mail,i| %>
-      <%if i > @dummy_mail.size - 4 %>
+      <% @@inbox.each_with_index do |mail,i| %>
+      <%if i > @@inbox.size - 4 %>
         <tr class="read-mail" data-mail-index=<%="#{i}"%>>
       <td>
           <input class="marked" type="checkbox">
