@@ -133,13 +133,17 @@ end
 
 post '/search_contact'  do
   #@@result_contact = @@contact. params["query"]
-  print(@@contact)
   @@result_contact = @@contact.map do |contact|
-    contact["Name"].match(params["query"])
+    if contact["Name"].match(params["query"])
+      contact
+    end
   end
   @@result_contact.delete(nil)
-  print(@@result_contact)
   redirect to('/search_contact')
+end
+
+get '/search_contact' do
+  erb :search_results_contact
 end
 
 def dummy_mail
