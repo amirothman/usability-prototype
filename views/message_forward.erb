@@ -8,13 +8,14 @@
       <form action="/send_email" method="post">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="forwardMessage">Reminder</h2>
-        <h4>Tim Weiss</h4>
+        <h2 class="modal-title message_title" id="forwardMessage">Title</h2>
+        <h4 class="message_sender">Sender</h4><small class="message_date">27/02/2014</small>
       </div>
       <div class="modal-body">
-      <p>
-        Hello please remember to give Carl his money back. He will be at b11 tomorrow.
+      <p class="message_content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, culpa. Reprehenderit libero adipisci, voluptates ipsam, ad magnam in mollitia id optio eum esse similique unde repudiandae, ex aut odio aliquid.
       </p>
+      <div class="message_attachment"></div>
 
 
 <div class="form-group">
@@ -23,7 +24,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Title</label>
-    <input name="title" type="text" class="form-control" id="exampleInputPassword1" value="FWD: Reminder">
+    <input id="forward_title" name="title" type="text" class="form-control" id="exampleInputPassword1" value="FWD: Reminder">
   </div>
   <div class="form-group"><textarea name="content" class="form-control" rows="7"></textarea></div>
   

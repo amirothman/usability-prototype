@@ -1,8 +1,8 @@
 require 'sinatra'
-require 'thin'
+#require 'thin'
 require 'yaml'
 require 'date'
-enable :sessions
+require 'json'
 
 configure do
   # logging is enabled by default in classic style applications,
@@ -12,10 +12,11 @@ configure do
   use Rack::CommonLogger, file
 end
 
-@@outbox = []
+@@outbox = YAML.load(IO.binread("outbox.yml"))["Email"]
 @@inbox = YAML.load(IO.binread("inbox.yml"))["Email"]
 @@spam = YAML.load(IO.binread("spam.yml"))
 @@trash = []
+@@draft = YAML.load(IO.binread("draft.yml"))["Email"]
 
 get '/' do
   @index_active = true
@@ -89,6 +90,22 @@ get '/mark_trash/:id' do
   redirect to('/inbox')
 end
 
+get '/get_message/:id' do
+  JSON.generate @@inbox[params['id'].to_i]
+end
+
+get '/get_message_outbox/:id' do
+  JSON.generate @@outbox[params['id'].to_i]
+end
+
+get '/get_message_draft/:id' do
+  JSON.generate @@draft[params['id'].to_i]
+end
+
+get '/get_message_trash/:id' do
+  JSON.generate @@trash[params['id'].to_i]
+end
+
 post '/send_email' do
 
   # add to the beginning of @@outbox
@@ -110,17 +127,11 @@ def dummy_mail
 end
 
 def dummy_mail_outbox
-  yaml = IO.binread("outbox.yml")
-  arr = YAML.load(yaml)["Email"]
-  @@outbox.each do |msg|
-    arr.unshift(msg)
-  end
-  arr
+  @@outbox
 end
 
 def dummy_mail_draft
-  yaml = IO.binread("draft.yml")
-  YAML.load(yaml)["Email"]
+  @@draft
 end
 
 def add_necessary_zero n
