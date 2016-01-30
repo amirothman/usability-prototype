@@ -105,3 +105,16 @@ get rid of random
 * spam DONE
 * trash / delete DONE
 * outbox detect attachment
+
+## Todos new
+
+* save in draft
+* contacts from yml
+* search
+
+## amir todos
+
+* text from message übernehmen
+* sent notifications
+* numbers
+* multiple selections

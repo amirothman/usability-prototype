@@ -24,32 +24,29 @@
     <td></td>
   </tr>
 
-  <% @dummy_mail_draft.each do |mail| %>
-<tr class="unread-mail">
+  <% @dummy_mail_draft.each_with_index do |mail,i| %>
+<tr class="unread-mail" data-mail-index=<%="#{i}"%>>
   <td>
       <input class="marked" type="checkbox">
   </td>
   <td>
-  <a href="#"  data-toggle="modal" data-target="#modalMessage"><%= mail["Sender"]%></a>
+  <a href="#" class="message_view_draft" data-toggle="modal" data-target="#modalMessage" data-mail-index=<%="#{i}"%>><%= mail["Sender"]%></a>
   </td>
   <td>
     <div class="col-md-8 inside_table">
-      <a href="#"  data-toggle="modal" data-target="#modalMessage" >
+      <a href="#" class="message_view_draft" data-toggle="modal" data-target="#modalMessage" data-mail-index=<%="#{i}"%>>
     <%= mail["Title"] %>
     <small> - <%= mail["Excerpt"] %></small></a>
     </div>
 
     <div class="col-md-4">
-      <% if rand(10) > 4 %>
+      <% if mail["Attachment"] != "" %>
         <i class="fa fa-paperclip"></i>
-      <% end %>
-      <% if rand(10) > 7 %>
-        <span class="label label-default">Replied</span>
       <% end %>
     </div>
 
   </td>
-  <td>26/1/2016</td>
+  <td><%= mail["Date"] %></td>
 </tr>
 
 <% end %>
