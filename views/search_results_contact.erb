@@ -8,38 +8,58 @@
 				           
 				    <a class="compose btn btn-default" href="#" role="button"  data-toggle="modal" data-target="#addContact">Add Contact</a>
 
-				    <table class="table table-condensed" id="contacts">
-				          
-				          <thead>
-				            <tr>
-				                <th>Name</th>
-				                <th>Email</th>
-				                <th>Address</th>
-				                <th>Phone</th>
-				                
-				            </tr>
-				        </thead>
-				        <tfoot>
-				            <tr>
-				                <th>Name</th>
-				                <th>Email</th>
-				                <th>Address</th>
-				                <th>Phone</th>
-				                
-				            </tr>
-				        </tfoot>
-				        <tbody>
-				            <tr>
-				                <td><a href="#"  data-toggle="modal" data-target="#myModal">Carl Zettner </a></td>
-				                <td><a href="#"  data-toggle="modal" data-target="#myModal">carl.zettner@mail.com</a></td>
-				                <td><a href="#"  data-toggle="modal" data-target="#myModal">Weimar 23, 33321</a></td>
-				                <td><a href="#"  data-toggle="modal" data-target="#myModal">61-232-3421</a></td>
-				               
-				            </tr>
-				        </tbody>
+				           <table class="table table-condensed" id="contacts">
+          
+          <thead>
+            <tr>
+                <th > </th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th> </th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                
+            </tr>
+        </tfoot>
+        <tbody>
 
-        			</table>
-
+            <% @@result_contact.each_with_index do |contact,i| %>
+                <tr>
+                    <td >
+                        <input class="marked" type="checkbox">
+                    </td>
+                    <td>
+                        <a href="#"  data-toggle="modal" data-target="#myModal" data-contact-index=<%="#{i}"%>>
+                            <%= contact["Name"] %>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#"  data-toggle="modal" data-target="#myModal" data-contact-index=<%="#{i}"%>>
+                            <%= contact["Email"] %>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#"  data-toggle="modal" data-target="#myModal" data-contact-index=<%="#{i}"%>>
+                            <%= contact["Address"] %>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#"  data-toggle="modal" data-target="#myModal" data-contact-index=<%="#{i}"%>>
+                            <%= contact["Phone"] %>
+                        </a>
+                    </td>
+                </tr>
+             <% end %>          
+        </tbody>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

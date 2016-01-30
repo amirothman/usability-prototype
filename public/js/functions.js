@@ -1,5 +1,5 @@
 $(window).load(function(){
-	getInput();
+
 });
 
 function getInput() {

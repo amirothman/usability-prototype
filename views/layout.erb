@@ -67,9 +67,9 @@
                       </div>
                   </form>
                 <% elsif @contact_active %>
-                <form action="/search_contact" class="navbar-form navbar-left" role="search">
+                <form action="/search_contact" class="navbar-form navbar-left" role="search" method="post">
                       <div class="form-group">
-                          <input type="text" class="form-control" placeholder="Search Contacts ">
+                          <input type="text" class="form-control" name="query" placeholder="Search Contacts ">
                       </div>
                   </form>
                 

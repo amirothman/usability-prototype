@@ -17,6 +17,7 @@ end
 @@spam = YAML.load(IO.binread("spam.yml"))
 @@contact = YAML.load(IO.binread("data_contacts.yml"))["Contact"]
 @@trash = []
+@@result_contact = []
 
 get '/' do
   @index_active = true
@@ -116,6 +117,17 @@ post '/create_contact' do
     })
 
  redirect to('/contact')
+end
+
+post '/search_contact'  do
+  #@@result_contact = @@contact. params["query"]
+  print(@@contact)
+  @@result_contact = @@contact.map do |contact|
+    contact["Name"].match(params["query"])
+  end
+  @@result_contact.delete(nil)
+  print(@@result_contact)
+  redirect to('/search_contact')
 end
 
 def dummy_mail
