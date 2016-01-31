@@ -19,9 +19,8 @@ end
 @@spam = YAML.load(IO.binread("spam.yml"))
 @@contact = YAML.load(IO.binread("data_contacts.yml"))["Contact"]
 @@trash = []
-@@result_contact = []
 @@draft = YAML.load(IO.binread("draft.yml"))["Email"]
-
+@@result_contact= []
 
 get '/' do
   @index_active = true
@@ -132,7 +131,6 @@ post '/create_contact' do
 end
 
 post '/search_contact'  do
-  #@@result_contact = @@contact. params["query"]
   @@result_contact = @@contact.map do |contact|
     if contact["Name"].match(params["query"])
       contact
@@ -144,22 +142,4 @@ end
 
 get '/search_contact' do
   erb :search_results_contact
-end
-
-def dummy_mail
-  @@inbox
-end
-
-def dummy_mail_outbox
-  yaml = IO.binread("outbox.yml")
-  arr = YAML.load(yaml)["Email"]
-  @@outbox.each do |msg|
-    arr.unshift(msg)
-  end
-  arr
-end
-
-def dummy_mail_draft
-  yaml = IO.binread("draft.yml")
-  YAML.load(yaml)["Email"]
 end
