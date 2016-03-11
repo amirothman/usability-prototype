@@ -118,3 +118,8 @@ get rid of random
 * sent notifications
 * numbers
 * multiple selections
+
+## new todos
+
+- modal
+- delete
