@@ -107,7 +107,8 @@ get '/get_message_trash/:id' do
 end
 
 post '/send_email' do
-  @@outbox.unshift({"Date"=>date_string,
+  @@outbox.unshift({
+                    # "Date"=>date_string,
                     "Sender"=> params["email"],
                     "Title"=> params["title"], 
                     "Content"=> params["content"],
