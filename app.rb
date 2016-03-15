@@ -141,30 +141,42 @@ get '/reset' do
 end
 
 post '/send_email' do
-  session["notification_message"] = "Email sent!"
+  
   now = Time.now
 
   date_string = "#{zero_padding now.day}/#{zero_padding now.month}/#{zero_padding now.year} #{zero_padding now.hour}:#{zero_padding now.min}"
+  if params["send"]
+    session["notification_message"] = "Email sent!"
+    if params["email"].include?(",")
+      params["email"].split(",").each do |email|
+        @@outbox.unshift({
+                        "Date"=>date_string,
+                        "Sender"=> email,
+                        "Title"=> params["title"], 
+                        "Content"=> params["content"],
+                        "Attachment"=> params["attachment"],
+                        "Excerpt"=>params["content"].split.first(4).join(" ")})
+      end
+    else
 
-  if params["email"].include?(",")
-    params["email"].split(",").each do |email|
       @@outbox.unshift({
-                      "Date"=>date_string,
-                      "Sender"=> email,
-                      "Title"=> params["title"], 
-                      "Content"=> params["content"],
-                      "Attachment"=> params["attachment"],
-                      "Excerpt"=>params["content"].split.first(4).join(" ")})
+                        "Date"=>date_string,
+                        "Sender"=> params["email"],
+                        "Title"=> params["title"], 
+                        "Content"=> params["content"],
+                        "Attachment"=> params["attachment"],
+                        "Excerpt"=>params["content"].split.first(4).join(" ")})
     end
-  else
 
-    @@outbox.unshift({
-                      "Date"=>date_string,
-                      "Sender"=> params["email"],
-                      "Title"=> params["title"], 
-                      "Content"=> params["content"],
-                      "Attachment"=> params["attachment"],
-                      "Excerpt"=>params["content"].split.first(4).join(" ")})
+  elsif params["save"]
+    session["notification_message"] = "Email saved!"
+    @@draft.unshift({
+                        "Date"=>date_string,
+                        "Sender"=> params["email"],
+                        "Title"=> params["title"], 
+                        "Content"=> params["content"],
+                        "Attachment"=> params["attachment"],
+                        "Excerpt"=>params["content"].split.first(4).join(" ")})
   end
   redirect to('/inbox')
 end

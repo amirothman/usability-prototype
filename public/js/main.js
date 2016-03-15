@@ -83,6 +83,29 @@ $(window).load(function(){
               $("#forward_title").attr("value","FWD : "+message_object["Title"]);
             };
 
+        var insert_to_modal_draft = function(d){
+              var message_object = JSON.parse(d);
+              $(".message_title").html(message_object["Title"]);
+              $(".message_sender").html(message_object["Sender"]);
+              $(".message_date").html(message_object["Date"]);
+              $(".message_content").html(message_object["Content"])
+              
+              var attachment = message_object["Attachment"];
+
+              if(attachment!=""){
+                $(".message_attachment").html('<i class="fa fa-paperclip"></i> '
+                                              + attachment);
+              }else{
+                $(".message_attachment").html('');
+              }
+
+              $("#reply_title").attr("value",message_object["Title"]);
+              $("#reply_email1").attr("value", message_object["SenderEmail"]);
+              $("#reply_email").attr("value", message_object["SenderEmail"]);
+              $("#forward_email").attr("value", message_object["SenderEmail"]);
+              $("#forward_title").attr("value","FWD : "+message_object["Title"]);
+            };
+
         $(".message_view").click(function(){
           to_mark = this.dataset.mailIndex;
           $.get("/get_message/"+to_mark,function(d){
@@ -102,8 +125,8 @@ $(window).load(function(){
 
         $(".message_view_draft").click(function(){
           to_mark = this.dataset.mailIndex;
-          $.get("/get_message_draft/"+to_mark,function(d){
-            insert_to_modal(d);
+          $.get("/get_message/"+to_mark,function(d){
+            insert_to_modal_draft(d);
           });
         })
 
