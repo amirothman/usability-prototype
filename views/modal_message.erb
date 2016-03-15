@@ -38,12 +38,7 @@
             </tr>
         </tfoot>
         <tbody>
-            <tr>
-                <td><input type="checkbox" data-email="tiger.nixon@mail.com" class="email_from_contacts"> Tiger Nixon</td>
-                <td>tiger.nixon@mail.com</td>
-                
-               
-            </tr>
+            
             <% @@contact.each do |contact| %>
             <tr>
               <td><input type="checkbox" data-email=<%= contact["Email"] %> class="email_from_contacts"> <%= contact["Name"] %></td>
