@@ -1,5 +1,15 @@
 ---
 Inbox:
+  - Sender: "Andreas Berst"
+    SenderEmail: andreasberst@googlemail.com
+    Recepient: ""
+    Title: "Party Invitation"
+    Excerpt: "tonight we gonna party!"
+    Content: "tonight we gonna party! \n All the awesome people shall be there. cya!"
+    Date: "30/01/2016 13:32"
+    Attachment: ""
+    Flag: "false"
+    Replied: "false"
   - Sender: "Paul Karpashevich"
     SenderEmail: paul.karpashevich@email.com
     Recepient: ""
