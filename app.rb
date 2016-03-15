@@ -1,7 +1,7 @@
 require 'sinatra'
-#require 'thin'
+# require 'thin'
 require 'yaml'
-require 'date'
+require 'time'
 require 'json'
 
 configure do
@@ -21,6 +21,14 @@ end
 @@trash = []
 @@draft = YAML.load(IO.binread("draft.yml"))["Email"]
 @@result_contact= []
+
+def zero_padding number
+  if number < 10
+    "0#{number}"
+  else
+    "#{number}"
+  end
+end
 
 get '/' do
   @index_active = true
@@ -106,15 +114,44 @@ get '/get_message_trash/:id' do
   JSON.generate @@trash[params['id'].to_i]
 end
 
-post '/send_email' do
-  @@outbox.unshift({
-                    # "Date"=>date_string,
-                    "Sender"=> params["email"],
-                    "Title"=> params["title"], 
-                    "Content"=> params["content"],
-                    "Attachment"=> params["attachment"],
-                    "Excerpt"=>params["content"].split.first(4).join(" ")})
+get '/reset' do 
+  @@outbox = YAML.load(IO.binread("outbox.yml"))["Email"]
+  @@inbox = YAML.load(IO.binread("data_mail.yml"))["Inbox"]
+  @@spam = YAML.load(IO.binread("spam.yml"))
+  @@contact = YAML.load(IO.binread("data_contacts.yml"))["Contact"]
+  @@trash = []
+  @@draft = YAML.load(IO.binread("draft.yml"))["Email"]
+  @@result_contact= []
 
+  redirect to('/inbox')
+end
+
+post '/send_email' do
+
+  now = Time.now
+
+  date_string = "#{zero_padding now.day}/#{zero_padding now.month}/#{zero_padding now.year} #{zero_padding now.hour}:#{zero_padding now.min}"
+
+  if params["email"].include?(",")
+    params["email"].split(",").each do |email|
+      @@outbox.unshift({
+                      "Date"=>date_string,
+                      "Sender"=> email,
+                      "Title"=> params["title"], 
+                      "Content"=> params["content"],
+                      "Attachment"=> params["attachment"],
+                      "Excerpt"=>params["content"].split.first(4).join(" ")})
+    end
+  else
+
+    @@outbox.unshift({
+                      "Date"=>date_string,
+                      "Sender"=> params["email"],
+                      "Title"=> params["title"], 
+                      "Content"=> params["content"],
+                      "Attachment"=> params["attachment"],
+                      "Excerpt"=>params["content"].split.first(4).join(" ")})
+  end
   redirect to('/inbox')
 end
 
