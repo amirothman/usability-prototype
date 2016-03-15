@@ -123,3 +123,5 @@ get rid of random
 
 - modal
 - delete
+
+- add recipient
