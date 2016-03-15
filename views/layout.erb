@@ -34,8 +34,8 @@
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
+      <div class="container-fluid">
+        <div class="navbar-header pull-left">
           <% unless @index_active %>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -59,16 +59,16 @@
           
                 <% if @mail_active %>
                 
-                  <form action="/search_mail" class="navbar-form navbar-left" role="search">
-                      <div class="form-group">
+                  <form action="/search_mail" class="navbar-form" role="search">
+                      <div class="form-group pull-left">
                         
                           <input type="text" name="search_query" class="form-control" placeholder="Search Mail ">
                         
                       </div>
                   </form>
                 <% elsif @contact_active %>
-                <form action="/search_contact" class="navbar-form navbar-left" role="search" method="post">
-                      <div class="form-group">
+                <form action="/search_contact" class="navbar-form" role="search" method="post">
+                      <div class="form-group pull-left">
                           <input type="text" class="form-control" name="query" placeholder="Search Contacts ">
                       </div>
                   </form>
@@ -76,12 +76,12 @@
                 <% end %>
                 
               
-          <ul class="nav navbar-nav pull-left">
+          <ul class="nav navbar-nav  pull-left">
             
             <li class=<%='active' if @mail_active %> ><a href="/inbox">Mail</a></li>
             <li class=<%='active' if @contact_active %>><a href="/contact">Contacts</a></li>
           </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav pull-right">
         <li><a href="#">blubb1234</a></li>
         <li><a href="/setting">Settings</a></li>
         <li><a href="/">Log Out</a></li>
