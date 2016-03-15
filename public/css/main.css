@@ -1,4 +1,10 @@
-
+.container-nav-wrapper {
+          position: relative;
+          height: 100%;
+          width: 100%;
+          left: 0;
+          padding-right: 10px;
+      }
 
 .buttons_mark{
   padding-top: 20px;
