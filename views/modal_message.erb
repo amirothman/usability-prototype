@@ -44,26 +44,12 @@
                 
                
             </tr>
+            <% @@contact.each do |contact| %>
             <tr>
-                <td><input type="checkbox" class="email_from_contacts" data-email="garett.winters@mail.com"> Garrett Winters</td>
-                <td class="name-2">garett.winters@mail.com</td>
-               
+              <td><input type="checkbox" data-email=<%= contact["Email"] %> class="email_from_contacts"> <%= contact["Name"] %></td>
+                <td><%= contact["Email"] %></td>
             </tr>
-            <tr>
-                <td><input type="checkbox" class="email_from_contacts" data-email="ashton.cox@mail.com"> Ashton Cox</td>
-                <td class="name-3">ashton.cox@mail.com</td>
-                
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="email_from_contacts" data-email="cedric.kelly@mail.com"> Cedric Kelly</td>
-                <td class="name-4">cedric.kelly@mail.com</td>
-               
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="email_from_contacts" data-email="airi.satou@mail.com"> Airi Satou</td>
-                <td class="name-5">airi.satou@mail.com</td>
-                
-            </tr>
+            <% end %>
           </tbody>
 
         </table>
