@@ -85,11 +85,18 @@ end
 
 get '/search_mail' do
   @mail_active = true
+  @results = @@inbox.map do |mail|
+    if mail["Sender"].downcase.match(params["search_query"].downcase) || mail["SenderEmail"].downcase.match(params["search_query"].downcase) || mail["Content"].downcase.match(params["search_query"].downcase)
+      mail
+    end
+  end
+  @results.delete(nil)
   erb :search_results_mail
 end
 
 get '/search_contact' do
   @contact_active = true
+
   erb :search_results_contact
 end
 
