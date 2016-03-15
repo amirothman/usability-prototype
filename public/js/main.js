@@ -77,7 +77,9 @@ $(window).load(function(){
               }
 
               $("#reply_title").attr("value","RE : "+message_object["Title"]);
-              $("#reply_email").attr("value", message_object["Email"]);
+              $("#reply_email1").attr("value", message_object["SenderEmail"]);
+              $("#reply_email").attr("value", message_object["SenderEmail"]);
+              $("#forward_email").attr("value", message_object["SenderEmail"]);
               $("#forward_title").attr("value","FWD : "+message_object["Title"]);
             };
 
