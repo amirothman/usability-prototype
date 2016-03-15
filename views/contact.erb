@@ -3,7 +3,12 @@
   
 
    <div class="container-fluid wrap">
-       
+       <% if session && session["notification_message"] %>
+            <div class="alert alert-success">
+                <a id="clear_notification" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <%= session["notification_message"] %>
+            </div>
+            <% end %>
         <h1>Contacts</h1>
             
         <a class="compose btn btn-default" href="#" role="button"  data-toggle="modal" data-target="#addContact">

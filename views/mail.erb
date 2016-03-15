@@ -19,6 +19,7 @@
       </div>
       <div class="main-content">
           <div class="swipe-area">
+
             <a href="#" data-toggle=".container-wrapper" id="sidebar-toggle">
               <i class="fa fa-angle-right"></i>
             </a>
@@ -28,7 +29,12 @@
 
 
           <div class="content">
-            
+            <% if session && session["notification_message"] %>
+            <div class="alert alert-success">
+                <a id="clear_notification" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <%= session["notification_message"] %>
+            </div>
+            <% end %>
              <%= erb :content_mail %>
          </div>
       </div>

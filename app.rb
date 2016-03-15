@@ -10,9 +10,12 @@ configure do
   file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
   file.sync = true
   use Rack::CommonLogger, file
+  
 end
 
 # Load data
+enable :sessions
+
 
 @@outbox = YAML.load(IO.binread("outbox.yml"))["Email"]
 @@inbox = YAML.load(IO.binread("data_mail.yml"))["Inbox"]
@@ -31,12 +34,16 @@ def zero_padding number
 end
 
 get '/' do
+  session["notification_message"] = nil
   @index_active = true
   erb :index
 end
 
-get '/inbox' do
+get '/close_flash' do
+  session["notification_message"] = nil
+end
 
+get '/inbox' do
   @mail_active = true
   @inbox_active = true
   erb :mail
@@ -127,7 +134,7 @@ get '/reset' do
 end
 
 post '/send_email' do
-
+  session["notification_message"] = "Email sent!"
   now = Time.now
 
   date_string = "#{zero_padding now.day}/#{zero_padding now.month}/#{zero_padding now.year} #{zero_padding now.hour}:#{zero_padding now.min}"
@@ -157,6 +164,8 @@ end
 
 
 post '/create_contact' do
+
+  session["notification_message"] = "Contact created!"
   @@contact.unshift({
       "Name"=> params["name"],
       "Email"=> params["email"],
