@@ -106,6 +106,10 @@ $(window).load(function(){
               $("#forward_title").attr("value","FWD : "+message_object["Title"]);
             };
 
+        $(".forward_email").on("click",function(){
+          $("#forward_email").val("");
+        });
+
         $(".message_view").click(function(){
           to_mark = this.dataset.mailIndex;
           $.get("/get_message/"+to_mark,function(d){
