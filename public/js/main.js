@@ -108,6 +108,10 @@ $(window).load(function(){
 
         $(".forward_email").on("click",function(){
           $("#forward_email").val("");
+          var content = $(".message_content")[0];
+          var txt = $(content).text();
+          console.log(txt);
+          $("#email_content").val(txt);
         });
 
         $(".message_view").click(function(){
